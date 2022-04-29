@@ -1,0 +1,32 @@
+name: Daily Report
+
+on:
+  schedule:
+  - cron: "0 14 * * *"
+  workflow_dispatch:
+  
+env:
+  MAIL_USER_EMAIL: ${{ secrets.MAIL_USER_EMAIL }}
+  MAIL_USER_PASSWORD: ${{ secrets.MAIL_USER_PASSWORD }}
+  MAIL_FROM: ${{ secrets.MAIL_FROM }}
+  
+jobs:
+  report:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - run: yarn install
+    - run: node src/main.js
