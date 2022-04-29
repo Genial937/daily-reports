@@ -9,6 +9,7 @@ env:
   MAIL_USER_EMAIL: ${{ secrets.MAIL_USER_EMAIL }}
   MAIL_USER_PASSWORD: ${{ secrets.MAIL_USER_PASSWORD }}
   MAIL_FROM: ${{ secrets.MAIL_FROM }}
+  ACCUWEATHER_API_KEY: ${{ secrets.ACCUWEATHER_API_KEY }}
   
 jobs:
   report:
@@ -27,5 +28,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         
+    - run: yarn install node-fetch@^2
     - run: yarn install
     - run: node src/main.js
