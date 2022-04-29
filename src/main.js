@@ -33,7 +33,7 @@ const nodemailer = require("nodemailer");
     <p>Forecast: ${forecastData.Headline.Text}</p>
     <p>Min: ${temperature.Minimum.Value}°${temperature.Minimum.Unit}</p>
     <p>Max: ${temperature.Maximum.Value}°${temperature.Maximum.Unit}</p>
-    <i><b>This is scheduled emails set by Teddy, on weather forecast, Nairobi, The action runs after every 5 minutes, however somtimes there are delays in minutes specified</b></i>
+    <i><b>This is scheduled emails set by Teddy, on weather forecast, Nairobi, The action runs after every 15 minutes, however somtimes there are delays in minutes specified</b></i>
     `, // html body
   });
 
